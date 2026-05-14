@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Frontend engineering course">
+  <rect width="800" height="450" fill="#fff8ee"/>
+  <rect x="90" y="70" width="620" height="300" rx="8" fill="#ffffff" stroke="#f4d5a3" stroke-width="4"/>
+  <rect x="125" y="110" width="550" height="54" rx="8" fill="#0f2f4f"/>
+  <rect x="125" y="190" width="155" height="120" rx="8" fill="#0ea5a4"/>
+  <rect x="322" y="190" width="155" height="120" rx="8" fill="#f59e0b"/>
+  <rect x="520" y="190" width="155" height="120" rx="8" fill="#1f6f8b"/>
+  <path d="M150 137h120M340 137h85M540 137h95" stroke="#ffffff" stroke-width="12" stroke-linecap="round"/>
+  <text x="115" y="398" fill="#0b1220" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700">Frontend Engineering</text>
+</svg>

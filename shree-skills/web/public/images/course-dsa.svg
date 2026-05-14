@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Data structures and algorithms course">
+  <rect width="800" height="450" fill="#f4f7fb"/>
+  <circle cx="400" cy="102" r="42" fill="#0f2f4f"/>
+  <circle cx="250" cy="225" r="42" fill="#1f6f8b"/>
+  <circle cx="550" cy="225" r="42" fill="#0ea5a4"/>
+  <circle cx="160" cy="340" r="42" fill="#f59e0b"/>
+  <circle cx="340" cy="340" r="42" fill="#f59e0b"/>
+  <circle cx="460" cy="340" r="42" fill="#f59e0b"/>
+  <circle cx="640" cy="340" r="42" fill="#f59e0b"/>
+  <path d="M368 128 280 197M432 128l88 69M225 253l-42 55M275 253l42 55M525 253l-42 55M575 253l42 55" stroke="#0b1220" stroke-width="10" stroke-linecap="round"/>
+  <text x="112" y="72" fill="#0b1220" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700">Data Structures and Algorithms</text>
+</svg>

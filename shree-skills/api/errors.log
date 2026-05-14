@@ -1,0 +1,4 @@
+src/routes/auth.ts(17,11): error TS2367: This comparison appears to be unintentional because the types '"custom" | "invalid_type" | "unrecognized_keys" | "too_big" | "too_small" | "invalid_format" | "not_multiple_of" | "invalid_union" | "invalid_key" | "invalid_element" | "invalid_value"' and '"invalid_string"' have no overlap.
+src/routes/auth.ts(17,52): error TS2339: Property 'validation' does not exist on type 'never'.
+src/routes/me.ts(29,32): error TS2339: Property 'userProfile' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.
+src/routes/me.ts(42,32): error TS2339: Property 'userProfile' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'.

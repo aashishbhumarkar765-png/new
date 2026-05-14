@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Full stack web development course">
+  <rect width="800" height="450" fill="#f4f7fb"/>
+  <rect x="70" y="70" width="660" height="310" rx="8" fill="#ffffff" stroke="#dbe5ef" stroke-width="4"/>
+  <rect x="105" y="110" width="270" height="210" rx="8" fill="#0f2f4f"/>
+  <rect x="420" y="110" width="270" height="210" rx="8" fill="#e6fbf9"/>
+  <path d="M135 160h160M135 200h200M135 240h125" stroke="#67e8f9" stroke-width="14" stroke-linecap="round"/>
+  <circle cx="500" cy="170" r="34" fill="#0ea5a4"/>
+  <circle cx="585" cy="240" r="48" fill="#f59e0b"/>
+  <path d="M492 240h-58M620 240h52M585 192v-54" stroke="#0f2f4f" stroke-width="12" stroke-linecap="round"/>
+  <text x="100" y="365" fill="#0b1220" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700">Full Stack Development</text>
+</svg>

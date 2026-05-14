@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="AI and ML foundations course">
+  <rect width="800" height="450" fill="#f7fbff"/>
+  <circle cx="400" cy="215" r="118" fill="#ffffff" stroke="#dbe5ef" stroke-width="5"/>
+  <circle cx="400" cy="215" r="52" fill="#0f2f4f"/>
+  <circle cx="270" cy="135" r="28" fill="#0ea5a4"/>
+  <circle cx="530" cy="135" r="28" fill="#0ea5a4"/>
+  <circle cx="270" cy="300" r="28" fill="#f59e0b"/>
+  <circle cx="530" cy="300" r="28" fill="#f59e0b"/>
+  <path d="M296 151l64 40M504 151l-64 40M296 288l64-40M504 288l-64-40" stroke="#1f6f8b" stroke-width="10" stroke-linecap="round"/>
+  <text x="198" y="390" fill="#0b1220" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700">AI and ML Foundations</text>
+</svg>

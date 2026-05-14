@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" role="img" aria-label="SQL beginners article">
+  <rect width="1200" height="600" fill="#eefdfa"/>
+  <ellipse cx="600" cy="145" rx="260" ry="74" fill="#0f2f4f"/>
+  <path d="M340 145v210c0 41 116 74 260 74s260-33 260-74V145" fill="#1f6f8b"/>
+  <ellipse cx="600" cy="355" rx="260" ry="74" fill="#0ea5a4"/>
+  <path d="M475 160h250M430 265h340M500 370h200" stroke="#ffffff" stroke-width="18" stroke-linecap="round"/>
+  <text x="356" y="535" fill="#0b1220" font-family="Segoe UI, Arial, sans-serif" font-size="54" font-weight="700">SQL for Beginners</text>
+</svg>

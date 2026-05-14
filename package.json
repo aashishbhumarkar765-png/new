@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "express-rate-limit": "^8.2.1",
+    "helmet": "^8.1.0",
+    "tailwind-merge": "^3.4.0",
+    "winston": "^3.19.0"
+  }
+}

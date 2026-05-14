@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="DevOps and cloud course">
+  <rect width="800" height="450" fill="#eefdfa"/>
+  <path d="M205 255c-55 0-96-32-96-78 0-42 34-74 80-78 22-44 70-70 125-70 76 0 138 50 151 117 9-3 20-5 31-5 56 0 101 38 101 86s-45 86-101 86H205z" fill="#ffffff" stroke="#0ea5a4" stroke-width="6"/>
+  <rect x="225" y="184" width="115" height="72" rx="8" fill="#0f2f4f"/>
+  <rect x="360" y="184" width="115" height="72" rx="8" fill="#1f6f8b"/>
+  <rect x="495" y="184" width="115" height="72" rx="8" fill="#f59e0b"/>
+  <path d="M282 256v52h270v-52" stroke="#0b1220" stroke-width="10" fill="none" stroke-linecap="round"/>
+  <text x="142" y="382" fill="#0b1220" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700">DevOps and Cloud Foundations</text>
+</svg>

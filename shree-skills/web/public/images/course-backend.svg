@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Backend API engineering course">
+  <rect width="800" height="450" fill="#f6fbff"/>
+  <rect x="90" y="82" width="620" height="280" rx="8" fill="#ffffff" stroke="#dbe5ef" stroke-width="4"/>
+  <rect x="132" y="125" width="170" height="82" rx="8" fill="#0f2f4f"/>
+  <rect x="315" y="125" width="170" height="82" rx="8" fill="#1f6f8b"/>
+  <rect x="498" y="125" width="170" height="82" rx="8" fill="#0ea5a4"/>
+  <path d="M302 166h13M485 166h13M217 207v58h366v-58" stroke="#f59e0b" stroke-width="10" fill="none" stroke-linecap="round"/>
+  <rect x="245" y="265" width="310" height="48" rx="8" fill="#fff4e5"/>
+  <text x="302" y="298" fill="#0b1220" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="700">API Layer</text>
+  <text x="108" y="390" fill="#0b1220" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700">Backend API Engineering</text>
+</svg>

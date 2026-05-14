@@ -1,0 +1,6 @@
+[32minfo[39m: Shree Skills API running on http://localhost:4000 {"service":"shree-skills-api","timestamp":"2026-05-12T16:34:14.553Z"}
+[32minfo[39m: Environment: development {"service":"shree-skills-api","timestamp":"2026-05-12T16:34:14.564Z"}
+[32minfo[39m: CORS enabled for: http://localhost:3000 {"service":"shree-skills-api","timestamp":"2026-05-12T16:34:14.566Z"}
+[32minfo[39m: GET /api/courses {"ip":"::1","service":"shree-skills-api","timestamp":"2026-05-12T16:34:52.618Z"}
+[32minfo[39m: Fetching courses list {"ip":"::1","service":"shree-skills-api","timestamp":"2026-05-12T16:34:52.624Z"}
+[33mwarn[39m: Database unavailable for courses; using mock catalog {"error":"\nInvalid `prisma.course.findMany()` invocation in\nC:\\SHREE\\shree-skills\\api\\src\\routes\\courses.ts:24:41\n\n  21 const take = parseLimit(req.query.limit);\n  22 try {\n  23   logger.info('Fetching courses list', { ip: req.ip });\n→ 24   const courses = await prisma.course.findMany(\nCan't reach database server at `db.pnbkjljeecxylgxgrnqr.supabase.co:5432`\n\nPlease make sure your database server is running at `db.pnbkjljeecxylgxgrnqr.supabase.co:5432`.","service":"shree-skills-api","timestamp":"2026-05-12T16:34:52.845Z"}

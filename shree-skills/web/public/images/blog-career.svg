@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" role="img" aria-label="Career projects article">
+  <rect width="1200" height="600" fill="#fff8ee"/>
+  <rect x="170" y="100" width="360" height="380" rx="8" fill="#ffffff" stroke="#f4d5a3" stroke-width="6"/>
+  <rect x="230" y="165" width="240" height="32" rx="8" fill="#0f2f4f"/>
+  <rect x="230" y="240" width="210" height="24" rx="8" fill="#1f6f8b"/>
+  <rect x="230" y="292" width="250" height="24" rx="8" fill="#1f6f8b"/>
+  <rect x="230" y="344" width="180" height="24" rx="8" fill="#1f6f8b"/>
+  <path d="M650 180h260M650 270h340M650 360h220" stroke="#0ea5a4" stroke-width="34" stroke-linecap="round"/>
+  <circle cx="975" cy="180" r="44" fill="#f59e0b"/>
+  <text x="150" y="548" fill="#0b1220" font-family="Segoe UI, Arial, sans-serif" font-size="48" font-weight="700">Resume Projects That Get You Hired</text>
+</svg>

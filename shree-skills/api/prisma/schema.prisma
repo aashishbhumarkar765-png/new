@@ -1,0 +1,67 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String       @id @default(uuid())
+  email        String       @unique
+  passwordHash String
+  createdAt    DateTime     @default(now())
+  enrollments  Enrollment[]
+}
+
+model Course {
+  id          String       @id @default(uuid())
+  title       String
+  slug        String       @unique
+  description String
+  level       String
+  price       Float
+  thumbnail   String
+  resources   Json?
+  createdAt   DateTime     @default(now())
+  enrollments Enrollment[]
+}
+
+model Enrollment {
+  id        String   @id @default(uuid())
+  userId    String
+  courseId  String
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+  course    Course   @relation(fields: [courseId], references: [id])
+
+  @@unique([userId, courseId])
+}
+
+model Blog {
+  id        String   @id @default(uuid())
+  title     String
+  slug      String   @unique
+  excerpt   String
+  tags      String[]
+  readTime  String
+  date      String
+  hero      String
+  content   String[]
+  resources Json?
+  createdAt DateTime @default(now())
+}
+
+model Roadmap {
+  id         String   @id @default(uuid())
+  slug       String   @unique
+  title      String
+  summary    String
+  duration   String
+  level      String
+  milestones String[]
+  resources  Json?
+  timeline   Json?
+  createdAt  DateTime @default(now())
+}
