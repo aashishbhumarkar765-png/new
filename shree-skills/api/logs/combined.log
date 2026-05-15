@@ -578,3 +578,11 @@
 {"ip":"::1","level":"info","message":"GET /api/courses","service":"shree-skills-api","timestamp":"2026-05-12T16:34:52.618Z"}
 {"ip":"::1","level":"info","message":"Fetching courses list","service":"shree-skills-api","timestamp":"2026-05-12T16:34:52.624Z"}
 {"error":"\nInvalid `prisma.course.findMany()` invocation in\nC:\\SHREE\\shree-skills\\api\\src\\routes\\courses.ts:24:41\n\n  21 const take = parseLimit(req.query.limit);\n  22 try {\n  23   logger.info('Fetching courses list', { ip: req.ip });\n→ 24   const courses = await prisma.course.findMany(\nCan't reach database server at `db.pnbkjljeecxylgxgrnqr.supabase.co:5432`\n\nPlease make sure your database server is running at `db.pnbkjljeecxylgxgrnqr.supabase.co:5432`.","level":"warn","message":"Database unavailable for courses; using mock catalog","service":"shree-skills-api","timestamp":"2026-05-12T16:34:52.845Z"}
+{"durationMs":21,"ip":"::1","level":"info","message":"HTTP request","method":"GET","path":"/api/health","service":"shree-skills-api","status":404,"timestamp":"2026-05-15T17:24:55.698Z"}
+{"durationMs":1,"ip":"::1","level":"info","message":"HTTP request","method":"GET","path":"/","service":"shree-skills-api","status":404,"timestamp":"2026-05-15T17:25:07.199Z"}
+{"durationMs":1,"ip":"::1","level":"info","message":"HTTP request","method":"GET","path":"/api/health","service":"shree-skills-api","status":404,"timestamp":"2026-05-15T17:25:23.844Z"}
+{"durationMs":3,"ip":"::1","level":"info","message":"HTTP request","method":"GET","path":"/health","service":"shree-skills-api","status":200,"timestamp":"2026-05-15T17:26:25.320Z"}
+{"level":"info","message":"Shree Skills API running on http://localhost:4000","service":"shree-skills-api","timestamp":"2026-05-15T17:26:52.089Z"}
+{"level":"info","message":"Environment: production","service":"shree-skills-api","timestamp":"2026-05-15T17:26:52.094Z"}
+{"level":"info","message":"CORS enabled for: http://localhost:3000","service":"shree-skills-api","timestamp":"2026-05-15T17:26:52.095Z"}
+{"ip":"::1","level":"info","message":"GET /api/health","service":"shree-skills-api","timestamp":"2026-05-15T17:26:58.599Z"}
