@@ -1,0 +1,57 @@
+name: CI - Build and Test
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install root dependencies
+        run: |
+          cd shree-skills/api
+          npm ci
+
+      - name: Generate Prisma client
+        run: |
+          cd shree-skills/api
+          npx prisma generate
+
+      - name: Build backend
+        run: |
+          cd shree-skills/api
+          npm run build
+
+      - name: Install frontend dependencies
+        run: |
+          cd shree-skills/web
+          npm ci
+
+      - name: Build frontend
+        run: |
+          cd shree-skills/web
+          npm run build
+
+      - name: Run lint (frontend)
+        run: |
+          cd shree-skills/web
+          npm run lint --if-present
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: web-build
+          path: shree-skills/web/.next

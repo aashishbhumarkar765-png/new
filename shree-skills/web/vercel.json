@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "package.json", "use": "@vercel/next" }
+  ],
+  "routes": [
+    { "src": "/api/(.*)", "dest": "https://$NEXT_PUBLIC_API_BASE_URL/api/$1" }
+  ]
+}
