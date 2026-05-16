@@ -21,27 +21,24 @@ const PORT = process.env.PORT || 4000;
 const WEB_ORIGIN = process.env.WEB_ORIGIN || 'http://localhost:3000';
 
 // Startup/config helpers
-import { prisma } from './prisma';
+import { prisma, tryPrismaConnect, disconnectPrisma, tcpCheck } from './prisma';
 
 function missingEnvVars(required: string[]) {
   return required.filter((k) => !process.env[k]);
 }
 
-async function connectPrismaWithRetries(retries = 5, delayMs = 1000) {
+async function attemptPrismaConnectWithRetries(retries = 5, delayMs = 1000) {
   for (let i = 0; i < retries; i++) {
-    try {
-      await prisma.$connect();
-      logger.info('Prisma connected');
-      return;
-    } catch (err: any) {
-      const attempt = i + 1;
-      logger.warn(`Prisma connect attempt ${attempt} failed: ${err?.message || err}`);
-      if (attempt >= retries) throw err;
-      const backoff = delayMs * Math.pow(2, i);
-      logger.info(`Waiting ${backoff}ms before next attempt`);
-      await new Promise((r) => setTimeout(r, backoff));
-    }
+    const ok = await tryPrismaConnect(Math.max(5000, delayMs * 2));
+    if (ok) return true;
+    const attempt = i + 1;
+    logger.warn(`Prisma connect attempt ${attempt} failed`);
+    if (attempt >= retries) break;
+    const backoff = delayMs * Math.pow(2, i);
+    logger.info(`Waiting ${backoff}ms before next attempt`);
+    await new Promise((r) => setTimeout(r, backoff));
   }
+  return false;
 }
 
 let server: ReturnType<typeof app.listen> | null = null;
@@ -52,8 +49,7 @@ async function gracefulShutdown(code = 0) {
     if (server) {
       server.close(() => logger.info('HTTP server closed'));
     }
-    await prisma.$disconnect();
-    logger.info('Prisma disconnected');
+    await disconnectPrisma();
   } catch (e: any) {
     logger.error('Error during shutdown', { error: e?.message || e });
   } finally {
@@ -156,8 +152,33 @@ async function start() {
   }
 
   try {
-    // Attempt to initialize Prisma with retries
-    await connectPrismaWithRetries(5, 1000);
+    // Attempt to initialize Prisma with retries (diagnostics + background retry)
+    if (process.env.DATABASE_URL) {
+      try {
+        const raw = process.env.DATABASE_URL.replace(/^"|"$/g, '');
+        const parsed = new URL(raw);
+        const host = parsed.hostname;
+        const port = Number(parsed.port) || 5432;
+        const reachable = await tcpCheck(host, port, 3000);
+        logger.info('DB TCP reachability', { host, port, reachable });
+      } catch (e: any) {
+        logger.warn('Failed to parse DATABASE_URL for TCP check', { err: e?.message || e });
+      }
+    }
+
+    const connected = await attemptPrismaConnectWithRetries(5, 1000);
+    if (!connected) {
+      logger.warn('Prisma initially unavailable; starting server in degraded mode and will retry in background');
+      // Start background reconnection attempts
+      const interval = setInterval(async () => {
+        logger.info('Background Prisma reconnect attempt');
+        const ok = await attemptPrismaConnectWithRetries(3, 1000);
+        if (ok) {
+          logger.info('Prisma reconnected in background');
+          clearInterval(interval);
+        }
+      }, 30_000);
+    }
   } catch (err: any) {
     logger.error('Failed to connect to the database after retries', { error: err?.message || err });
     // In production, exit so the platform restarts the container
