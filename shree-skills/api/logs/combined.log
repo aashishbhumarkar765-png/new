@@ -586,3 +586,12 @@
 {"level":"info","message":"Environment: production","service":"shree-skills-api","timestamp":"2026-05-15T17:26:52.094Z"}
 {"level":"info","message":"CORS enabled for: http://localhost:3000","service":"shree-skills-api","timestamp":"2026-05-15T17:26:52.095Z"}
 {"ip":"::1","level":"info","message":"GET /api/health","service":"shree-skills-api","timestamp":"2026-05-15T17:26:58.599Z"}
+{"level":"warn","message":"Prisma connect attempt 1 failed: Can't reach database server at `db.mqzvwaxkpdrstgcrlurx.supabase.co:5432`\n\nPlease make sure your database server is running at `db.mqzvwaxkpdrstgcrlurx.supabase.co:5432`.","service":"shree-skills-api","timestamp":"2026-05-15T18:18:20.489Z"}
+{"level":"info","message":"Waiting 1000ms before next attempt","service":"shree-skills-api","timestamp":"2026-05-15T18:18:20.504Z"}
+{"level":"warn","message":"Prisma connect attempt 2 failed: Can't reach database server at `db.mqzvwaxkpdrstgcrlurx.supabase.co:5432`\n\nPlease make sure your database server is running at `db.mqzvwaxkpdrstgcrlurx.supabase.co:5432`.","service":"shree-skills-api","timestamp":"2026-05-15T18:18:21.524Z"}
+{"level":"info","message":"Waiting 2000ms before next attempt","service":"shree-skills-api","timestamp":"2026-05-15T18:18:21.537Z"}
+{"level":"warn","message":"Prisma connect attempt 3 failed: Can't reach database server at `db.mqzvwaxkpdrstgcrlurx.supabase.co:5432`\n\nPlease make sure your database server is running at `db.mqzvwaxkpdrstgcrlurx.supabase.co:5432`.","service":"shree-skills-api","timestamp":"2026-05-15T18:18:23.553Z"}
+{"level":"info","message":"Waiting 4000ms before next attempt","service":"shree-skills-api","timestamp":"2026-05-15T18:18:23.554Z"}
+{"level":"warn","message":"Prisma connect attempt 4 failed: Can't reach database server at `db.mqzvwaxkpdrstgcrlurx.supabase.co:5432`\n\nPlease make sure your database server is running at `db.mqzvwaxkpdrstgcrlurx.supabase.co:5432`.","service":"shree-skills-api","timestamp":"2026-05-15T18:18:27.574Z"}
+{"level":"info","message":"Waiting 8000ms before next attempt","service":"shree-skills-api","timestamp":"2026-05-15T18:18:27.575Z"}
+{"level":"warn","message":"Prisma connect attempt 5 failed: Can't reach database server at `db.mqzvwaxkpdrstgcrlurx.supabase.co:5432`\n\nPlease make sure your database server is running at `db.mqzvwaxkpdrstgcrlurx.supabase.co:5432`.","service":"shree-skills-api","timestamp":"2026-05-15T18:18:35.676Z"}

@@ -20,6 +20,47 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 const WEB_ORIGIN = process.env.WEB_ORIGIN || 'http://localhost:3000';
 
+// Startup/config helpers
+import { prisma } from './prisma';
+
+function missingEnvVars(required: string[]) {
+  return required.filter((k) => !process.env[k]);
+}
+
+async function connectPrismaWithRetries(retries = 5, delayMs = 1000) {
+  for (let i = 0; i < retries; i++) {
+    try {
+      await prisma.$connect();
+      logger.info('Prisma connected');
+      return;
+    } catch (err: any) {
+      const attempt = i + 1;
+      logger.warn(`Prisma connect attempt ${attempt} failed: ${err?.message || err}`);
+      if (attempt >= retries) throw err;
+      const backoff = delayMs * Math.pow(2, i);
+      logger.info(`Waiting ${backoff}ms before next attempt`);
+      await new Promise((r) => setTimeout(r, backoff));
+    }
+  }
+}
+
+let server: ReturnType<typeof app.listen> | null = null;
+
+async function gracefulShutdown(code = 0) {
+  try {
+    logger.info('Shutting down server...');
+    if (server) {
+      server.close(() => logger.info('HTTP server closed'));
+    }
+    await prisma.$disconnect();
+    logger.info('Prisma disconnected');
+  } catch (e: any) {
+    logger.error('Error during shutdown', { error: e?.message || e });
+  } finally {
+    process.exit(code);
+  }
+}
+
 // Validate required env in production
 if (process.env.NODE_ENV === 'production') {
   const missing: string[] = [];
@@ -99,11 +140,55 @@ app.use((err: any, _req: express.Request, res: express.Response, _next: express.
   });
 });
 
-// Start server
-app.listen(PORT, () => {
-  logger.info(`Shree Skills API running on http://localhost:${PORT}`);
-  logger.info(`Environment: ${process.env.NODE_ENV || 'development'}`);
-  logger.info(`CORS enabled for: ${WEB_ORIGIN}`);
+// Start server (robust)
+async function start() {
+  // Validate required env in production
+  if (process.env.NODE_ENV === 'production') {
+    const missing: string[] = [];
+    if (!process.env.DATABASE_URL) missing.push('DATABASE_URL');
+    if (!process.env.JWT_SECRET) missing.push('JWT_SECRET');
+    if (missing.length) {
+      logger.error('Missing required environment variables', { missing });
+      // Exit so deployment fails fast and secrets are set
+      throw new Error(`Missing required environment variables: ${missing.join(', ')}`);
+    }
+  }
+
+  try {
+    // Attempt to initialize Prisma with retries
+    await connectPrismaWithRetries(5, 1000);
+  } catch (err: any) {
+    logger.error('Failed to connect to the database after retries', { error: err?.message || err });
+    // In production, exit so the platform restarts the container
+    if (process.env.NODE_ENV === 'production') {
+      process.exit(1);
+    }
+  }
+
+  server = app.listen(PORT, () => {
+    logger.info(`Shree Skills API running on http://localhost:${PORT}`);
+    logger.info(`Environment: ${process.env.NODE_ENV || 'development'}`);
+    logger.info(`CORS enabled for: ${WEB_ORIGIN}`);
+  });
+
+  // Process-level handlers
+  process.on('uncaughtException', (err) => {
+    logger.error('uncaughtException', { error: (err as Error).message, stack: (err as Error).stack });
+    gracefulShutdown(1);
+  });
+
+  process.on('unhandledRejection', (reason) => {
+    logger.error('unhandledRejection', { reason });
+    gracefulShutdown(1);
+  });
+
+  process.on('SIGTERM', () => gracefulShutdown(0));
+  process.on('SIGINT', () => gracefulShutdown(0));
+}
+
+start().catch((err) => {
+  logger.error('Failed to start server', { error: err?.message || err });
+  process.exit(1);
 });
 
 export default app;
