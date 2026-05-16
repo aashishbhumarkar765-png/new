@@ -96,6 +96,22 @@ app.use((req, _res, next) => {
   next();
 });
 
+// Explicit health endpoints (Railway and uptime checks expect a quick root/health response)
+app.get('/', (_req, res) => {
+  res.status(200).json({
+    success: true,
+    message: 'Shree Skills API is running',
+    status: 'healthy'
+  });
+});
+
+app.get('/api/health', (_req, res) => {
+  res.status(200).json({
+    success: true,
+    status: 'healthy'
+  });
+});
+
 // API Routes
 app.use('/api', healthRouter);
 app.use('/api', authRouter);
@@ -105,22 +121,7 @@ app.use('/api', roadmapsRouter);
 app.use('/api', enrollmentsRouter);
 app.use('/api', meRouter);
 
-// Root endpoint
-app.get('/', (_req, res) => {
-  res.json({
-    name: 'Shree Skills API',
-    version: '1.0.0',
-    status: 'running',
-    endpoints: {
-      health: '/api/health',
-      auth: '/api/auth/*',
-      courses: '/api/courses',
-      blogs: '/api/blogs',
-      roadmaps: '/api/roadmaps',
-      me: '/api/me'
-    }
-  });
-});
+// (root endpoint replaced by explicit health response above)
 
 // 404 handler
 app.use((_req, res) => {
